@@ -18,15 +18,19 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        return true;
-        //DELETE ABOVE STATEMENT AND WRITE CODE HERE
+        String hour = String.format("%02d", getCurrentTime().getHour());
+        String minute = String.format("%02d", getCurrentTime().getMinute());
+        String second = String.format("%02d", getCurrentTime().getSecond());
+
+        LocalTime currentTime = LocalTime.parse(hour+":"+minute+":"+second);
+
+        return !currentTime.isBefore(openingTime) && !currentTime.isAfter(closingTime);
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
-        return null;
-        //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
+        return menu;
     }
 
     private Item findItemByName(String itemName){
@@ -35,6 +39,15 @@ public class Restaurant {
                 return item;
         }
         return null;
+    }
+
+    /**
+     * Add default menu items in the menu item list.
+     */
+    public void addDefaultMenuItems() {
+        addToMenu("Sweet Corn Soup",119);
+        addToMenu("Vegetable lasagne",269);
+        addToMenu("Chole Bhature",150);
     }
 
     public void addToMenu(String name, int price) {
