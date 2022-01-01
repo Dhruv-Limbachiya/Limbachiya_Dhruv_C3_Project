@@ -76,4 +76,22 @@ public class Restaurant {
         return name;
     }
 
+    /**
+     * Added new feature to get the order cost of selected items.
+     * @param itemNames - name of selected menu item.
+     * @return - total order cost.
+     */
+    public int getOrderCost(List<String> itemNames) {
+
+        int totalOrderCost = 0;
+
+        for(String itemName : itemNames) {
+            Item item = findItemByName(itemName);
+            if(item != null)
+                totalOrderCost += item.getPrice();
+        }
+
+        return totalOrderCost;
+    }
+
 }
