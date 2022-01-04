@@ -79,7 +79,7 @@ public class Restaurant {
     /**
      * Added new feature to get the order cost of selected items.
      * @param itemNames - name of selected menu item.
-     * @return - total order cost.
+     * @return - total order cost of select menu item.
      */
     public int getOrderCost(List<String> itemNames) {
 
